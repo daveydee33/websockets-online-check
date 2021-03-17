@@ -1,3 +1,4 @@
+Try it out - https://websockets-online-check.herokuapp.com/
 ## How to use
 
 1. Install dependencies, and Start the dev server

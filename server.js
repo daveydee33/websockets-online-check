@@ -1,7 +1,16 @@
-const WebSocket = require("ws");
-const PORT = process.env.PORT || 8080;
+const WebSockets = require("ws");
+const express = require("express");
+const path = require("path");
 
-const wss = new WebSocket.Server({ port: PORT });
+const PORT = process.env.PORT || 8080;
+const INDEX = "/index.htm";
+
+const server = express()
+  .use(express.static(path.join(__dirname, "public")))
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+const wss = new WebSockets.Server({ server });
 
 wss.on("connection", (ws, req) => {
   const ip1 = req.socket.remoteAddress;
@@ -28,5 +37,3 @@ wss.on("connection", (ws, req) => {
     );
   });
 });
-
-console.log(`Running on Port: ${PORT}`);

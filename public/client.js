@@ -1,4 +1,5 @@
-const url = "ws://localhost:5000";
+// const url = "ws://localhost:5000";
+var url = location.origin.replace(/^http/, "ws");
 const connection = new WebSocket(url);
 
 connection.onopen = () => {

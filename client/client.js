@@ -1,4 +1,4 @@
-const url = "ws://localhost:8080";
+const url = "ws://localhost:5000";
 const connection = new WebSocket(url);
 
 connection.onopen = () => {
@@ -27,7 +27,7 @@ connection.onmessage = (e) => {
   document.querySelector(".clientToServer").innerHTML = clientToServer;
   document.querySelector(".serverToClient").innerHTML = serverToClient;
   document.querySelector(".totalRoundTrip").innerHTML = totalRoundTrip;
-  console.log(`Time Client-to-Server: ${clientToServer} ms`);
-  console.log(`Time Server-to-Client: ${serverToClient} ms`);
-  console.log(`Total Roundtrip Time: ${totalRoundTrip} ms`);
+  console.log(
+    `Total RT: ${totalRoundTrip}, Client-to-Server: ${clientToServer}, Server-to-Client: ${serverToClient}.`
+  );
 };

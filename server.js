@@ -1,6 +1,7 @@
 const WebSocket = require("ws");
+const PORT = process.env.PORT || 8080;
 
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: PORT });
 
 wss.on("connection", (ws, req) => {
   const ip1 = req.socket.remoteAddress;
@@ -27,3 +28,5 @@ wss.on("connection", (ws, req) => {
     );
   });
 });
+
+console.log(`Running on Port: ${PORT}`);

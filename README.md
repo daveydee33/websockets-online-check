@@ -20,3 +20,5 @@
 - Keep updating on Client Side (Timeout?)
 - Implement Secure - WSS and HTTPS
 - Display Time to Server, Time to Client, and Total
+- Handle when Server Offline
+- Add Control over Interval and Start/Stop

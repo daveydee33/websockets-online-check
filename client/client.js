@@ -2,11 +2,15 @@ const url = "ws://localhost:8080";
 const connection = new WebSocket(url);
 
 connection.onopen = () => {
-  connection.send(
-    JSON.stringify({
-      clientTime: Date.now(),
-    })
-  );
+  const sendRequest = () => {
+    connection.send(
+      JSON.stringify({
+        clientTime: Date.now(),
+      })
+    );
+  };
+
+  setInterval(sendRequest, 1000);
 };
 
 connection.onerror = (error) => {

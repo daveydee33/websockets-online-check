@@ -20,7 +20,14 @@ connection.onerror = (error) => {
 connection.onmessage = (e) => {
   const { clientTime, serverTime } = JSON.parse(e.data);
   const now = Date.now();
-  console.log(`Time Client-to-Server: ${serverTime - clientTime} ms`);
-  console.log(`Time Server-to-Client: ${now - serverTime} ms`);
-  console.log(`Total Roundtrip Time: ${now - clientTime}`);
+  const clientToServer = serverTime - clientTime;
+  const serverToClient = now - serverTime;
+  const totalRoundTrip = now - clientTime;
+
+  document.querySelector(".clientToServer").innerHTML = clientToServer;
+  document.querySelector(".serverToClient").innerHTML = serverToClient;
+  document.querySelector(".totalRoundTrip").innerHTML = totalRoundTrip;
+  console.log(`Time Client-to-Server: ${clientToServer} ms`);
+  console.log(`Time Server-to-Client: ${serverToClient} ms`);
+  console.log(`Total Roundtrip Time: ${totalRoundTrip} ms`);
 };

@@ -8,7 +8,7 @@ wss.on("connection", (ws, req) => {
   console.log(`|${ip1}|${ip2}|Connected`);
 
   ws.on("open", () => {
-    console.log("connected"); // isn't logging?  #TODO
+    console.log("opened"); // isn't logging?  #TODO
   });
 
   ws.on("close", () => {

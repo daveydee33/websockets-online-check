@@ -9,7 +9,7 @@ wss.on("connection", (ws, req) => {
 
   ws.on("open", () => {
     console.log("connected");
-    ws.send(Date.now());
+    // ws.send(Date.now());
   });
 
   ws.on("close", () => {
@@ -17,11 +17,14 @@ wss.on("connection", (ws, req) => {
   });
 
   ws.on("message", (message) => {
-    console.log(`Received message => ${message}`);
-    console.log(`Roundtrip time: ${Date.now() - message} ms`);
+    const { clientTime } = JSON.parse(message);
+    console.log(`Time To Server: ${Date.now() - clientTime} ms`);
 
-    ws.send(Date.now());
+    ws.send(
+      JSON.stringify({
+        clientTime,
+        serverTime: Date.now(),
+      })
+    );
   });
-
-  ws.send("Response 😎");
 });

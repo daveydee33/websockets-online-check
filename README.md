@@ -17,7 +17,6 @@
 
 ## TODO
 
-- Keep updating on Client Side
-- Send/Receive using JSON
+- Keep updating on Client Side (Timeout?)
 - Implement Secure - WSS and HTTPS
 - Display Time to Server, Time to Client, and Total
